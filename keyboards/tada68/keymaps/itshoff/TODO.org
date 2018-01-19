@@ -1,0 +1,4 @@
+* Hardware öäå
+  * Probably needs OS specific macros
+  * https://www.familysearch.org/wiki/en/Sweden_Typing_the_letters_%C3%85,_%C3%84,_and_%C3%96
+  * http://wiki.linuxquestions.org/wiki/Accented_Characters
