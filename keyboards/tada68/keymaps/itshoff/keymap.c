@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |     |   |Up | € |   |   |   |   |   |   |   | å |   |     |Hme |
    * |----------------------------------------------------------------|
-   * |      |<- |Dn | ->|   |   |Lft|Dwn|Up|Rght| ö | ä |   F24  |End |
+   * |      |<- |Dn | ->|   |   |Lft|Dwn|Up|Rght| ö | ä |   F13  |End |
    * |----------------------------------------------------------------|
    * |        |   |   |Bl-|BL |BL+|   |VU-|VU+|MUT|   |   McL|MsU|McR |
    * |----------------------------------------------------------------|
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_CL] = KEYMAP_ANSI(
   _______, KC_F1 ,KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_INS ,  \
   _______,_______, KC_UP, MY_EUR,_______, _______,_______,_______,_______,_______,_______, MY_AO,_______, _______,KC_HOME, \
-  _______,KC_LEFT,KC_DOWN,KC_RIGHT,_______,_______,KC_LEFT,KC_DOWN,KC_UP,KC_RIGHT, MY_O, MY_A,    KC_F24  , KC_END, \
+  _______,KC_LEFT,KC_DOWN,KC_RIGHT,_______,_______,KC_LEFT,KC_DOWN,KC_UP,KC_RIGHT, MY_O, MY_A,    KC_F13  , KC_END, \
   _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,KC_VOLD,KC_VOLU,KC_MUTE,_______,KC_BTN1, KC_MS_U, KC_BTN2, \
   _______,_______,_______,                 _______,               _______,_______,_______,KC_MS_L,KC_MS_D, KC_MS_R),
 
@@ -125,7 +125,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     case INPUT_F:
                     case INPUT_LIN:
                     case INPUT_MAC:
-                        SEND_STRING(SS_TAP(X_F23));
+                        SEND_STRING(SS_TAP(X_F14));
                         return false;
                     case INPUT_WIN:
                         if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
@@ -142,7 +142,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     case INPUT_F:
                     case INPUT_LIN:
                     case INPUT_MAC:
-                        SEND_STRING(SS_TAP(X_F22));
+                        SEND_STRING(SS_TAP(X_F15));
                         return false;
                     case INPUT_WIN:
                         if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
@@ -159,7 +159,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     case INPUT_F:
                     case INPUT_LIN:
                     case INPUT_MAC:
-                        SEND_STRING(SS_TAP(X_F21));
+                        SEND_STRING(SS_TAP(X_F16));
                         return false;
                     case INPUT_WIN:
                         if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
@@ -176,7 +176,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     case INPUT_F:
                     case INPUT_LIN:
                     case INPUT_MAC:
-                        SEND_STRING(SS_TAP(X_F20));
+                        SEND_STRING(SS_TAP(X_F17));
                         return false;
                     case INPUT_WIN:
                         WIN_ALT_CODE(0, 1, 2, 8);
