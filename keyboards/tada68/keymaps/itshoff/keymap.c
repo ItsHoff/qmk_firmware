@@ -103,6 +103,7 @@ void my_tap(uint16_t keycode) {
     unregister_code(keycode);
 };
 
+// Use this macro instead of SEND_STRING because we require numpad keys
 #define WIN_ALT_CODE(a, b, c, d) { \
     register_code(KC_LALT);        \
     my_tap(KC_KP_##a);             \
