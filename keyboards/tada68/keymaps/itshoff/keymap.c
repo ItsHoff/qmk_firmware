@@ -57,25 +57,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,TD(TD_RSHIFT_CAPS),KC_UP,KC_PGDN, \
   KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                        KC_RALT,MO(_FL),KC_RCTRL, KC_LEFT,KC_DOWN,KC_RGHT),
 
-  /* Keymap _CL: Caps Layer
+  /* Keymap _CL: Caps Layer (rest HYPR modified)
    * ,----------------------------------------------------------------.
-   * |   | F1|F2 |F3 |F4 |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|Del    |Ins |
+   * |   | F1|F2 |F3 |F4 |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|Del    |    |
    * |----------------------------------------------------------------|
-   * |     |   |Up | € |   |   |   |   |   |   |   | å |   |     |Hme |
+   * |     |   |   | € |   |   |   |   |   |   |   | å |   |     |    |
    * |----------------------------------------------------------------|
-   * |      |<- |Dn | ->|   |   |Lft|Dwn|Up|Rght| ö | ä |   F13  |End |
+   * |      |   |   |   |   |   |Lft|Dwn|Up|Rght| ö | ä |   F13  |    |
    * |----------------------------------------------------------------|
-   * |        |   |   |Bl-|BL |BL+|   |VU-|VU+|MUT|   |   McL|MsU|McR |
+   * |        |   |   |   |   |   |   |   |   |   |   |   McL|MsU|McR |
    * |----------------------------------------------------------------|
    * |    |    |    |                       |   |   |    |MsL|MsD|MsR |
    * `----------------------------------------------------------------'
    */
 [_CL] = KEYMAP_ANSI(
-  _______, KC_F1 ,KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_INS ,  \
-  _______,_______, KC_UP, MY_EUR,_______, _______,_______,_______,_______,_______,_______, MY_AO,_______, _______,KC_HOME, \
-  _______,KC_LEFT,KC_DOWN,KC_RIGHT,_______,_______,KC_LEFT,KC_DOWN,KC_UP,KC_RIGHT, MY_O, MY_A,    KC_F13  , KC_END, \
-  _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,KC_VOLD,KC_VOLU,KC_MUTE,_______,KC_BTN1, KC_MS_U, KC_BTN2, \
-  _______,_______,_______,                 _______,               _______,_______,_______,KC_MS_L,KC_MS_D, KC_MS_R),
+  HYPR(KC_GRV), KC_F1 ,     KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,         KC_F9,        KC_F10,        KC_F11,  KC_F12,        KC_DEL,        HYPR(KC_ESC),  \
+  HYPR(KC_TAB), HYPR(KC_Q), HYPR(KC_W), MY_EUR,     HYPR(KC_R), HYPR(KC_T), HYPR(KC_Y), HYPR(KC_U), HYPR(KC_I),    HYPR(KC_O),   HYPR(KC_P),    MY_AO,   HYPR(KC_RBRC), HYPR(KC_BSLS), HYPR(KC_DEL),  \
+  _______,      HYPR(KC_A), HYPR(KC_S), HYPR(KC_D), HYPR(KC_F), HYPR(KC_G), KC_LEFT,    KC_DOWN,    KC_UP,         KC_RIGHT,     MY_O,          MY_A,    KC_F13,                       HYPR(KC_PGUP), \
+  _______,      HYPR(KC_Z), HYPR(KC_X), HYPR(KC_C), HYPR(KC_V), HYPR(KC_B), HYPR(KC_N), HYPR(KC_M), HYPR(KC_COMM), HYPR(KC_DOT), HYPR(KC_SLSH),          KC_BTN1,       KC_MS_U,       KC_BTN2,       \
+  _______,_______,_______,                 HYPR(KC_SPC),                                            _______,       _______,      _______,                KC_MS_L,       KC_MS_D,       KC_MS_R),
 
   /* Keymap _FL: Function Layer
    * ,----------------------------------------------------------------.
