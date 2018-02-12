@@ -131,8 +131,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case MY_O:
                 switch(input_method) {
                     case INPUT_F:
-                    case INPUT_LIN:
-                    case INPUT_MAC:
                         SEND_STRING(SS_TAP(X_F14));
                         return false;
                     case INPUT_WIN:
@@ -144,12 +142,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                             WIN_ALT_CODE(0, 2, 4, 6);
                         }
                         return false;
+                    case INPUT_MAC:
+                        if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
+                            unregister_code(KC_LSHIFT);
+                            SEND_STRING(SS_LALT("u"));
+                            register_code(KC_LSHIFT);
+                        } else {
+                            SEND_STRING(SS_LALT("u"));
+                        }
+                        SEND_STRING("o");
+                        return false;
+                    case INPUT_LIN:
+                        SEND_STRING("TODO");
+                        return false;
                 }
             case MY_A:
                 switch(input_method) {
                     case INPUT_F:
-                    case INPUT_LIN:
-                    case INPUT_MAC:
                         SEND_STRING(SS_TAP(X_F15));
                         return false;
                     case INPUT_WIN:
@@ -161,12 +170,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                             WIN_ALT_CODE(0, 2, 2, 8);
                         }
                         return false;
+                    case INPUT_MAC:
+                        if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
+                            unregister_code(KC_LSHIFT);
+                            SEND_STRING(SS_LALT("u"));
+                            register_code(KC_LSHIFT);
+                        } else {
+                            SEND_STRING(SS_LALT("u"));
+                        }
+                        SEND_STRING("a");
+                        return false;
+                    case INPUT_LIN:
+                        SEND_STRING("TODO");
+                        return false;
+
                 }
             case MY_AO:
                 switch(input_method) {
                     case INPUT_F:
-                    case INPUT_LIN:
-                    case INPUT_MAC:
                         SEND_STRING(SS_TAP(X_F16));
                         return false;
                     case INPUT_WIN:
@@ -178,16 +199,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                             WIN_ALT_CODE(0, 2, 2, 9);
                         }
                         return false;
+                    case INPUT_MAC:
+                        // Shift modifies correctly by default
+                        SEND_STRING(SS_LALT("a"));
+                        return false;
+                    case INPUT_LIN:
+                        SEND_STRING("TODO");
+                        return false;
                 }
             case MY_EUR:
                 switch(input_method) {
                     case INPUT_F:
-                    case INPUT_LIN:
-                    case INPUT_MAC:
                         SEND_STRING(SS_TAP(X_F17));
                         return false;
                     case INPUT_WIN:
                         WIN_ALT_CODE(0, 1, 2, 8);
+                        return false;
+                    case INPUT_MAC:
+                        SEND_STRING(SS_LALT(SS_LSFT("2")));
+                        return false;
+                    case INPUT_LIN:
+                        SEND_STRING("TODO");
                         return false;
                 }
         }
