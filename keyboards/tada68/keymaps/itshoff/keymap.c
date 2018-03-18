@@ -79,22 +79,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Keymap _FL: Function Layer
    * ,----------------------------------------------------------------.
-   * |   |F|WIN |MAC |LIN |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|Del    |Ins |
+   * |   |F|WIN |MAC |LIN |   |   |   |   |   |MUT|VU-|VU+|Del   |Ins |
    * |----------------------------------------------------------------|
    * |     |   |Up |   |   |   |   |   |   |   |   |   |   |     |Hme |
    * |----------------------------------------------------------------|
    * | Esc  |<- |Dn | ->|   |   |   |   |   |   |   |   |        |End |
    * |----------------------------------------------------------------|
-   * |        |   |   |Bl-|BL |BL+|   |VU-|VU+|MUT|   |   McL|MsU|McR |
+   * |        |   |   |Bl-|BL |BL+|   |  |PREV|NEXT|PAUSE|McL|MsU|McR |
    * |----------------------------------------------------------------|
    * |    |    |    |                       |   |   |    |MsL|MsD|MsR |
    * `----------------------------------------------------------------'
    */
 [_FL] = KEYMAP_ANSI(
-  _______,SET_INPUT_F,SET_INPUT_WIN,SET_INPUT_MAC,SET_INPUT_LIN, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, KC_INS ,  \
+  _______,SET_INPUT_F,SET_INPUT_WIN,SET_INPUT_MAC,SET_INPUT_LIN, _______, _______, _______, _______, _______, KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_DEL, KC_INS ,  \
   _______,_______, KC_UP,_______,_______, _______,_______,_______,_______,_______,_______,_______,_______, _______,KC_HOME, \
   KC_ESC ,KC_LEFT,KC_DOWN,KC_RIGHT,_______,_______,_______,_______,_______,_______,_______,_______,        _______,KC_END, \
-  _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,KC_VOLD,KC_VOLU,KC_MUTE,_______,KC_BTN1, KC_MS_U, KC_BTN2, \
+  _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,_______,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_PLAY_PAUSE,KC_BTN1, KC_MS_U, KC_BTN2, \
   _______,_______,_______,                 _______,               _______,_______,KC_F24,KC_MS_L,KC_MS_D, KC_MS_R),
 };
 
