@@ -72,8 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 [_CL] = KEYMAP_ANSI(
   HYPR(KC_GRV), KC_F1 ,     KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,         KC_F9,        KC_F10,        KC_F11,  KC_F12,        KC_DEL,        HYPR(KC_ESC),  \
-  HYPR(KC_TAB), HYPR(KC_Q), HYPR(KC_W), MY_EUR,     HYPR(KC_R), HYPR(KC_T), HYPR(KC_Y), HYPR(KC_U), HYPR(KC_I),    HYPR(KC_O),   HYPR(KC_P),    MY_AO,   HYPR(KC_RBRC), HYPR(KC_BSLS), HYPR(KC_DEL),  \
-  _______,      HYPR(KC_A), HYPR(KC_S), HYPR(KC_D), HYPR(KC_F), HYPR(KC_G), KC_LEFT,    KC_DOWN,    KC_UP,         KC_RIGHT,     MY_O,          MY_A,    HYPR(KC_ENT),                 HYPR(KC_PGUP), \
+  HYPR(KC_TAB), HYPR(KC_Q), HYPR(KC_W), HYPR(KC_E), HYPR(KC_R), HYPR(KC_T), HYPR(KC_Y), HYPR(KC_U), HYPR(KC_I),    HYPR(KC_O),   HYPR(KC_P),    HYPR(KC_LBRC), HYPR(KC_RBRC), HYPR(KC_BSLS), HYPR(KC_DEL),  \
+  _______,      HYPR(KC_A), HYPR(KC_S), HYPR(KC_D), HYPR(KC_F), HYPR(KC_G), KC_LEFT,    KC_DOWN,    KC_UP,         KC_RIGHT,     HYPR(KC_SCLN), HYPR(KC_QUOT), HYPR(KC_ENT),           HYPR(KC_PGUP), \
   _______,      HYPR(KC_Z), HYPR(KC_X), HYPR(KC_C), HYPR(KC_V), HYPR(KC_B), HYPR(KC_N), HYPR(KC_M), HYPR(KC_COMM), HYPR(KC_DOT), HYPR(KC_SLSH),          KC_BTN1,       KC_MS_U,       KC_BTN2,       \
   _______,_______,_______,                 HYPR(KC_SPC),                                            _______,       _______,      _______,                KC_MS_L,       KC_MS_D,       KC_MS_R),
 
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------'
    */
 [_FL] = KEYMAP_ANSI(
-  _______,SET_INPUT_F,SET_INPUT_WIN,SET_INPUT_MAC,SET_INPUT_LIN, _______, _______, _______, _______, _______, KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_DEL, KC_INS ,  \
+  _______,_______,_______,_______,_______, _______, _______, _______, _______, _______, KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_DEL, KC_INS ,  \
   _______,_______, KC_UP,_______,_______, _______,_______,_______,_______,_______,_______,_______,_______, _______,KC_HOME, \
   KC_ESC ,KC_LEFT,KC_DOWN,KC_RIGHT,_______,_______,_______,_______,_______,_______,_______,_______,        _______,KC_END, \
   _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,_______,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_PLAY_PAUSE,KC_BTN1, KC_MS_U, KC_BTN2, \
@@ -112,118 +112,3 @@ void my_tap(uint16_t keycode) {
     my_tap(KC_KP_##d);             \
     unregister_code(KC_LALT);      \
     }
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    static int input_method = INPUT_DEFAULT;
-    if (record->event.pressed) {
-        switch(keycode) {
-            case SET_INPUT_F:
-                input_method = INPUT_DEFAULT;
-                return false;
-            case SET_INPUT_WIN:
-                input_method = INPUT_WIN;
-                return false;
-            case SET_INPUT_MAC:
-                input_method = INPUT_MAC;
-                return false;
-            case SET_INPUT_LIN:
-                input_method = INPUT_LIN;
-                return false;
-            case MY_O:
-                switch(input_method) {
-                    case INPUT_DEFAULT:
-                        SEND_STRING(SS_LCTRL(SS_LSFT(SS_LALT(SS_LGUI(";")))));
-                        return false;
-                    case INPUT_WIN:
-                        if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
-                            unregister_code(KC_LSHIFT);
-                            WIN_ALT_CODE(0, 2, 1, 4);
-                            register_code(KC_LSHIFT);
-                        } else {
-                            WIN_ALT_CODE(0, 2, 4, 6);
-                        }
-                        return false;
-                    case INPUT_MAC:
-                        if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
-                            unregister_code(KC_LSHIFT);
-                            SEND_STRING(SS_LALT("u"));
-                            register_code(KC_LSHIFT);
-                        } else {
-                            SEND_STRING(SS_LALT("u"));
-                        }
-                        SEND_STRING("o");
-                        return false;
-                    case INPUT_LIN:
-                        SEND_STRING("TODO");
-                        return false;
-                }
-            case MY_A:
-                switch(input_method) {
-                    case INPUT_DEFAULT:
-                        SEND_STRING(SS_LCTRL(SS_LSFT(SS_LALT(SS_LGUI("'")))));
-                        return false;
-                    case INPUT_WIN:
-                        if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
-                            unregister_code(KC_LSHIFT);
-                            WIN_ALT_CODE(0, 1, 9, 6);
-                            register_code(KC_LSHIFT);
-                        } else {
-                            WIN_ALT_CODE(0, 2, 2, 8);
-                        }
-                        return false;
-                    case INPUT_MAC:
-                        if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
-                            unregister_code(KC_LSHIFT);
-                            SEND_STRING(SS_LALT("u"));
-                            register_code(KC_LSHIFT);
-                        } else {
-                            SEND_STRING(SS_LALT("u"));
-                        }
-                        SEND_STRING("a");
-                        return false;
-                    case INPUT_LIN:
-                        SEND_STRING("TODO");
-                        return false;
-
-                }
-            case MY_AO:
-                switch(input_method) {
-                    case INPUT_DEFAULT:
-                        SEND_STRING(SS_LCTRL(SS_LSFT(SS_LALT(SS_LGUI("[")))));
-                        return false;
-                    case INPUT_WIN:
-                        if (keyboard_report->mods & MOD_BIT(KC_LSHIFT)) {
-                            unregister_code(KC_LSHIFT);
-                            WIN_ALT_CODE(0, 1, 9, 7);
-                            register_code(KC_LSHIFT);
-                        } else {
-                            WIN_ALT_CODE(0, 2, 2, 9);
-                        }
-                        return false;
-                    case INPUT_MAC:
-                        // Shift modifies correctly by default
-                        SEND_STRING(SS_LALT("a"));
-                        return false;
-                    case INPUT_LIN:
-                        SEND_STRING("TODO");
-                        return false;
-                }
-            case MY_EUR:
-                switch(input_method) {
-                    case INPUT_DEFAULT:
-                        SEND_STRING(SS_LCTRL(SS_LSFT(SS_LALT(SS_LGUI("e")))));
-                        return false;
-                    case INPUT_WIN:
-                        WIN_ALT_CODE(0, 1, 2, 8);
-                        return false;
-                    case INPUT_MAC:
-                        SEND_STRING(SS_LALT(SS_LSFT("2")));
-                        return false;
-                    case INPUT_LIN:
-                        SEND_STRING("TODO");
-                        return false;
-                }
-        }
-    }
-    return true;
-};
