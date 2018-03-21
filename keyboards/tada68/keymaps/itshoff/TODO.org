@@ -1,4 +1,5 @@
-* Hardware öäå
-  * Missing Linux
-  * https://www.familysearch.org/wiki/en/Sweden_Typing_the_letters_%C3%85,_%C3%84,_and_%C3%96
-  * http://wiki.linuxquestions.org/wiki/Accented_Characters
+* Tab hypr
+* Game layer
+  * Override caps esc
+  * Override tab hypr (if done)
+  * Bind esc somewhere
