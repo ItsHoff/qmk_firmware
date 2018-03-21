@@ -1,5 +1,0 @@
-* Tab hypr
-* Game layer
-  * Override caps esc
-  * Override tab hypr (if done)
-  * Bind esc somewhere
