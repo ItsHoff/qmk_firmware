@@ -9,6 +9,7 @@
 #define _FL 2
 
 #define _______ KC_TRNS
+#define AGUI(kc) LALT(LGUI(kc))
 
 enum custom_keycodes {
     MY_O = SAFE_RANGE,
@@ -57,13 +58,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,TD(TD_RSHIFT_CAPS),KC_UP,KC_PGDN, \
   KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                        KC_RALT,MO(_FL),KC_RCTRL, KC_LEFT,KC_DOWN,KC_RGHT),
 
-  /* Keymap _CL: Caps Layer (rest HYPR modified)
+  /* Keymap _CL: Caps Layer (rest Alt + GUI modified)
    * ,----------------------------------------------------------------.
    * |   | F1|F2 |F3 |F4 |F5 |F6 |F7 |F8 |F9 |F10|F11|F12|Del    |    |
    * |----------------------------------------------------------------|
-   * |     |   |   | € |   |   |   |   |   |   |   | å |   |     |    |
+   * |     |   |   |   |   |   |   |   |   |   |   |   |   |     |    |
    * |----------------------------------------------------------------|
-   * |      |   |   |   |   |   |Lft|Dwn|Up|Rght| ö | ä |   F13  |    |
+   * |      |   |   |   |   |   |Lft|Dwn|Up|Rght|   |   |        |    |
    * |----------------------------------------------------------------|
    * |        |   |   |   |   |   |   |   |   |   |   |   McL|MsU|McR |
    * |----------------------------------------------------------------|
@@ -71,11 +72,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------'
    */
 [_CL] = KEYMAP_ANSI(
-  HYPR(KC_GRV), KC_F1 ,     KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,         KC_F9,        KC_F10,        KC_F11,  KC_F12,        KC_DEL,        HYPR(KC_ESC),  \
-  HYPR(KC_TAB), HYPR(KC_Q), HYPR(KC_W), HYPR(KC_E), HYPR(KC_R), HYPR(KC_T), HYPR(KC_Y), HYPR(KC_U), HYPR(KC_I),    HYPR(KC_O),   HYPR(KC_P),    HYPR(KC_LBRC), HYPR(KC_RBRC), HYPR(KC_BSLS), HYPR(KC_DEL),  \
-  _______,      HYPR(KC_A), HYPR(KC_S), HYPR(KC_D), HYPR(KC_F), HYPR(KC_G), KC_LEFT,    KC_DOWN,    KC_UP,         KC_RIGHT,     HYPR(KC_SCLN), HYPR(KC_QUOT), HYPR(KC_ENT),           HYPR(KC_PGUP), \
-  _______,      HYPR(KC_Z), HYPR(KC_X), HYPR(KC_C), HYPR(KC_V), HYPR(KC_B), HYPR(KC_N), HYPR(KC_M), HYPR(KC_COMM), HYPR(KC_DOT), HYPR(KC_SLSH),          KC_BTN1,       KC_MS_U,       KC_BTN2,       \
-  _______,_______,_______,                 HYPR(KC_SPC),                                            _______,       _______,      _______,                KC_MS_L,       KC_MS_D,       KC_MS_R),
+  AGUI(KC_GRV), KC_F1 ,     KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,         KC_F9,        KC_F10,        KC_F11,  KC_F12,        KC_DEL,        AGUI(KC_ESC),  \
+  AGUI(KC_TAB), AGUI(KC_Q), AGUI(KC_W), AGUI(KC_E), AGUI(KC_R), AGUI(KC_T), AGUI(KC_Y), AGUI(KC_U), AGUI(KC_I),    AGUI(KC_O),   AGUI(KC_P),    AGUI(KC_LBRC), AGUI(KC_RBRC), AGUI(KC_BSLS), AGUI(KC_DEL),  \
+  _______,      AGUI(KC_A), AGUI(KC_S), AGUI(KC_D), AGUI(KC_F), AGUI(KC_G), KC_LEFT,    KC_DOWN,    KC_UP,         KC_RIGHT,     AGUI(KC_SCLN), AGUI(KC_QUOT), AGUI(KC_ENT),           AGUI(KC_PGUP), \
+  _______,      AGUI(KC_Z), AGUI(KC_X), AGUI(KC_C), AGUI(KC_V), AGUI(KC_B), AGUI(KC_N), AGUI(KC_M), AGUI(KC_COMM), AGUI(KC_DOT), AGUI(KC_SLSH),          KC_BTN1,       KC_MS_U,       KC_BTN2,       \
+  _______,_______,_______,                 AGUI(KC_SPC),                                            _______,       _______,      _______,                KC_MS_L,       KC_MS_D,       KC_MS_R),
 
   /* Keymap _FL: Function Layer
    * ,----------------------------------------------------------------.
