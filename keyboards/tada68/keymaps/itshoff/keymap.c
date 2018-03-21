@@ -5,8 +5,9 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _BL 0
-#define _CL 1
-#define _FL 2
+#define _GL 1
+#define _CL 2
+#define _FL 3
 
 #define _______ KC_TRNS
 // Caps layer modifier
@@ -45,11 +46,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|  \  |Del |
    * |----------------------------------------------------------------|
-   * |FN(Esc)|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return |F11 |
+   * |CL(Esc)|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return |F11 |
    * |----------------------------------------------------------------|
    * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|RsCaps| Up|PgDn|
    * |----------------------------------------------------------------|
-   * |Ctrl|Win |Alt |        Space          |Alt| FN|Ctrl|Lef|Dow|Rig |
+   * |Ctrl|Win |Alt |        Space          |Alt| FL|Ctrl|Lef|Dow|Rig |
    * `----------------------------------------------------------------'
    */
 [_BL] = KEYMAP_ANSI(
@@ -58,6 +59,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LT(_CL, KC_ESC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT, KC_ENT,KC_F11,  \
   KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,TD(TD_RSHIFT_CAPS),KC_UP,KC_PGDN, \
   KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                        KC_RALT,MO(_FL),KC_RCTRL, KC_LEFT,KC_DOWN,KC_RGHT),
+
+  /* Keymap _GL: (Game Layer) Block unwanted keys from base layer while gaming
+   * ,----------------------------------------------------------------.
+   * |    |  |   |   |   |   |   |   |   |   |   |   |   |       |Esc |
+   * |----------------------------------------------------------------|
+   * |     |   |   |   |   |   |   |   |   |   |   |   |   |     |    |
+   * |----------------------------------------------------------------|
+   * | CL    |   |   |   |   |   |   |   |   |   |   |   |       |    |
+   * |----------------------------------------------------------------|
+   * |        |   |   |   |   |   |   |   |   |   |   |      |   |    |
+   * |----------------------------------------------------------------|
+   * |    |    |    |                       |   | FL|    |   |   |    |
+   * `----------------------------------------------------------------'
+   */
+[_GL] = KEYMAP_ANSI(
+  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,KC_ESC, \
+  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS, \
+  MO(_CL), KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,  \
+  KC_TRNS,         KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, \
+  KC_TRNS, KC_TRNS,KC_TRNS,                KC_TRNS,                        KC_TRNS,MO(_FL),KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS),
 
   /* Keymap _CL: Caps Layer (rest modified as defined by CLMD)
    * ,----------------------------------------------------------------.
@@ -85,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |     |   |Up |   |   |   |   |   |   |   |   |   |   |     |Hme |
    * |----------------------------------------------------------------|
-   * | Esc  |<- |Dn | ->|   |   |   |   |   |   |   |   |        |End |
+   * | Esc  |<- |Dn | ->|   |GL |   |   |   |   |   |   |        |End |
    * |----------------------------------------------------------------|
    * |        |   |   |Bl-|BL |BL+|   |  |PREV|NEXT|PAUSE|McL|MsU|McR |
    * |----------------------------------------------------------------|
@@ -95,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FL] = KEYMAP_ANSI(
   _______,_______,_______,_______,_______, _______, _______, _______, _______, _______, KC_AUDIO_MUTE, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_DEL, KC_INS ,  \
   _______,_______, KC_UP,_______,_______, _______,_______,_______,_______,_______,_______,_______,_______, _______,KC_HOME, \
-  KC_ESC ,KC_LEFT,KC_DOWN,KC_RIGHT,_______,_______,_______,_______,_______,_______,_______,_______,        _______,KC_END, \
+  KC_ESC ,KC_LEFT,KC_DOWN,KC_RIGHT,_______,TG(_GL),_______,_______,_______,_______,_______,_______,        _______,KC_END, \
   _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,_______,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_PLAY_PAUSE,KC_BTN1, KC_MS_U, KC_BTN2, \
   _______,_______,_______,                 _______,               _______,_______,KC_F24,KC_MS_L,KC_MS_D, KC_MS_R),
 };
