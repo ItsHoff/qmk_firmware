@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Keymap _GL: (Game Layer) Block unwanted keys from base layer while gaming
    * ,----------------------------------------------------------------.
-   * |    |  |   |   |   |   |   |   |   |   |   |   |   |       |Esc |
+   * |    |  |   |   |   |   |   |   |   |   |   |   |   |       |    |
    * |----------------------------------------------------------------|
    * | Tab |   |   |   |   |   |   |   |   |   |   |   |   |     |    |
    * |----------------------------------------------------------------|
@@ -70,15 +70,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |        |   |   |   |   |   |   |   |   |   |   |      |   |    |
    * |----------------------------------------------------------------|
-   * |    |    |    |                       |   | FL|    |   |   |    |
+   * |    |    |    |                       |Esc| FL|    |   |   |    |
    * `----------------------------------------------------------------'
    */
 [_GL] = KEYMAP_ANSI(
-  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,KC_ESC, \
+  KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS, \
   KC_TAB,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS, \
   MO(_CL), KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,  \
   KC_TRNS,         KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS, \
-  KC_TRNS, KC_TRNS,KC_TRNS,                KC_TRNS,                        KC_TRNS,MO(_FL),KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS),
+  KC_TRNS, KC_TRNS,KC_TRNS,                KC_TRNS,                        KC_ESC, MO(_FL), KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS),
 
   /* Keymap _CL: Caps Layer (rest modified as defined by CLMD)
    * ,----------------------------------------------------------------.
