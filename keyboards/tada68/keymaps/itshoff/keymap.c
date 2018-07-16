@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,----------------------------------------------------------------.
    * |   |KP1|KP2|KP3|KP4|KP5|KP6|KP7|KP8|KP9|KP0|VU-|VU+|Mute   |Ins |
    * |----------------------------------------------------------------|
-   * |     |   |Up |   |   |   |   |   |   |   |   |   |   |     |Hme |
+   * |     |   |Up |   |   |   |   |   |   |   |   |   |   |PrScn|Hme |
    * |----------------------------------------------------------------|
    * | Esc  |<- |Dn | ->|   |GL |   |   |   |   |   |   |        |End |
    * |----------------------------------------------------------------|
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 [_FL] = KEYMAP_ANSI(
   _______, KC_P1, KC_P2, KC_P3, KC_P4, KC_P5, KC_P6, KC_P7, KC_P8, KC_P9, KC_P0, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE, KC_INS ,  \
-  _______,_______, KC_UP,_______,_______, _______,_______,_______,_______,_______,_______,_______,_______, _______,KC_HOME, \
+  _______,_______, KC_UP,_______,_______, _______,_______,_______,_______,_______,_______,_______,_______, KC_PSCREEN, KC_HOME, \
   KC_ESC ,KC_LEFT,KC_DOWN,KC_RIGHT,_______,TG(_GL),_______,_______,_______,_______,_______,_______,        _______,KC_END, \
   _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,_______,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_PLAY_PAUSE,KC_BTN1, KC_MS_U, KC_BTN2, \
   _______,_______,_______,                 _______,               _______,_______,KC_F24,KC_MS_L,KC_MS_D, KC_MS_R),
