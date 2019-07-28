@@ -8,30 +8,29 @@
 #define GAME_LAYER 1
 #define CAPS_LAYER 2
 #define MEDIA_LAYER 3
+#define UNICODE_LAYER 4
 
 // Caps layer modifier
 #define CLMD(kc) LALT(LCTL(kc))
 
-enum custom_keycodes {
-    MY_O = SAFE_RANGE,
-    MY_A,
-    MY_AO,
-    MY_EUR,
-    SET_INPUT_F,
-    SET_INPUT_WIN,
-    SET_INPUT_MAC,
-    SET_INPUT_LIN,
+enum unicode_names {
+    LOWER_A,
+    UPPER_A,
+    LOWER_O,
+    UPPER_O,
+    UNI_E,
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [LOWER_A] = 0x00E4,
+    [UPPER_A] = 0x00C4,
+    [LOWER_O] = 0x00F6,
+    [UPPER_O] = 0x00D6,
+    [UNI_E]  = 0x20AC,
 };
 
 enum tap_dance {
     TD_RSHIFT_CAPS = 0
-};
-
-enum input_method {
-    INPUT_DEFAULT,
-    INPUT_WIN,
-    INPUT_MAC,
-    INPUT_LIN,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -49,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|RsCaps| Up|PgDn|
    * |----------------------------------------------------------------|
-   * |Ctrl|Win |Alt |        Space          |Alt| ML|Esc |Lef|Dow|Rig |
+   * |Ctrl|Win |Alt |        Space          |UL |ML |Esc |Lef|Dow|Rig |
    * `----------------------------------------------------------------'
    */
 [BASE_LAYER] = LAYOUT_ansi(
@@ -57,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ALL_T(KC_TAB),   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC, KC_RBRC,KC_BSLS, KC_DEL,  \
   LT(CAPS_LAYER, KC_ESC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT, KC_ENT,          KC_F11,  \
   KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,TD(TD_RSHIFT_CAPS),KC_UP, KC_PGDN, \
-  KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                         KC_RALT,MO(MEDIA_LAYER),KC_ESC, KC_LEFT, KC_DOWN,         KC_RGHT),
+  KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                         OSL(UNICODE_LAYER),MO(MEDIA_LAYER),KC_ESC, KC_LEFT, KC_DOWN,         KC_RGHT),
 
   /*  Game Layer: Block unwanted keys from base layer while gaming
    * ,----------------------------------------------------------------.
@@ -118,19 +117,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC ,KC_LEFT,KC_DOWN,KC_RIGHT,_______,TG(GAME_LAYER),_______,_______,_______,_______,_______,_______,        _______,KC_END, \
   _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,_______,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_PLAY_PAUSE,KC_BTN1, KC_MS_U, KC_BTN2, \
   _______,_______,_______,                 _______,               _______,_______,KC_F24,KC_MS_L,KC_MS_D, KC_MS_R),
-};
 
-void my_tap(uint16_t keycode) {
-    register_code(keycode);
-    unregister_code(keycode);
+  /*  Unicode Layer: Special characters missing from the standard layout
+   * ,----------------------------------------------------------------.
+   * |    |  |   |   |   |   |   |   |   |   |   |   |   |       |    |
+   * |----------------------------------------------------------------|
+   * |     |   |Win| € |   |   |   |   |   | ö |   |   |   |     |    |
+   * |----------------------------------------------------------------|
+   * |       | ä |   |   |   |   |   |   |   |Lnx|   |   |       |    |
+   * |----------------------------------------------------------------|
+   * |        |   |   |   |   |   |   |Mac|   |   |   |      |   |    |
+   * |----------------------------------------------------------------|
+   * |    |    |    |                       |   |   |    |   |   |    |
+   * `----------------------------------------------------------------'
+   */
+[UNICODE_LAYER] = LAYOUT_ansi(
+  _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, _______, _______,_______, \
+  _______,  _______, UC_M_WC,  X(UNI_E),   _______,   _______,   _______,   _______,   _______,   XP(LOWER_O, UPPER_O),  _______,  _______, _______,_______,_______, \
+  _______, XP(LOWER_A, UPPER_A),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   UC_M_LN,   _______,_______, _______,_______,  \
+  _______,         _______,   _______,   _______,   _______,   _______,   _______,   UC_M_OS,   _______,_______, _______,_______,_______,_______, \
+  _______, _______,_______,                _______,                        _______, _______, _______, _______, _______, _______),
 };
-
-// Use this macro instead of SEND_STRING because we require numpad keys
-#define WIN_ALT_CODE(a, b, c, d) { \
-    register_code(KC_LALT);        \
-    my_tap(KC_KP_##a);             \
-    my_tap(KC_KP_##b);             \
-    my_tap(KC_KP_##c);             \
-    my_tap(KC_KP_##d);             \
-    unregister_code(KC_LALT);      \
-    }
