@@ -52,11 +52,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------'
    */
 [BASE_LAYER] = LAYOUT_ansi(
-  KC_GRV,          KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS, KC_EQL, KC_BSPC, KC_F5,   \
-  ALL_T(KC_TAB),   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC, KC_RBRC,KC_BSLS, KC_DEL,  \
-  LT(CAPS_LAYER, KC_ESC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN,KC_QUOT, KC_ENT,          KC_F11,  \
-  KC_LSFT,         KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH,TD(TD_RSHIFT_CAPS),KC_UP, KC_PGDN, \
-  KC_LCTL, KC_LGUI,KC_LALT,                KC_SPC,                         OSL(UNICODE_LAYER),MO(MEDIA_LAYER),KC_ESC, KC_LEFT, KC_DOWN,         KC_RGHT),
+  KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_BSPC, KC_F5, \
+  ALL_T(KC_TAB), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL, \
+  LT(CAPS_LAYER, KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, KC_F11, \
+  KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, TD(TD_RSHIFT_CAPS), KC_UP, KC_PGDN, \
+  KC_LCTL, KC_LGUI, KC_LALT,  KC_SPC  , OSL(UNICODE_LAYER), MO(MEDIA_LAYER), KC_ESC, KC_LEFT, KC_DOWN, KC_RGHT),
 
   /*  Game Layer: Block unwanted keys from base layer while gaming
    * ,----------------------------------------------------------------.
@@ -72,11 +72,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------'
    */
 [GAME_LAYER] = LAYOUT_ansi(
-  _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, _______, _______,_______, \
-  KC_TAB,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, _______,_______,_______, \
-  MO(CAPS_LAYER), _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,_______, _______,_______,  \
-  _______,         _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,_______, _______,_______,_______,_______, \
-  _______, _______,_______,                _______,                        _______, _______, _______, _______,_______,_______),
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+  KC_TAB, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+  MO(CAPS_LAYER), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
 
   /* Caps Layer: Convenience binds and rest of the keys modified by ctrl + alt
    * ,----------------------------------------------------------------.
@@ -92,11 +92,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------'
    */
 [CAPS_LAYER] = LAYOUT_ansi(
-  CLMD(KC_GRV), KC_F1 ,     KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,         KC_F9,        KC_F10,        KC_F11,  KC_F12,        KC_DEL,        CLMD(KC_ESC),  \
-  CLMD(KC_TAB), CLMD(KC_Q), CLMD(KC_W), CLMD(KC_E), CLMD(KC_R), CLMD(KC_T), CLMD(KC_Y), CLMD(KC_U), CLMD(KC_I),    CLMD(KC_O),   CLMD(KC_P),    CLMD(KC_LBRC), CLMD(KC_RBRC), CLMD(KC_BSLS), CLMD(KC_DEL),  \
-  _______,      CLMD(KC_A), CLMD(KC_S), CLMD(KC_D), CLMD(KC_F), CLMD(KC_G), KC_LEFT,    KC_DOWN,    KC_UP,         KC_RIGHT,     CLMD(KC_SCLN), CLMD(KC_QUOT), CLMD(KC_ENT),           CLMD(KC_PGUP), \
-  _______,      CLMD(KC_Z), CLMD(KC_X), CLMD(KC_C), CLMD(KC_V), CLMD(KC_B), CLMD(KC_N), CLMD(KC_M), CLMD(KC_COMM), CLMD(KC_DOT), CLMD(KC_SLSH),          KC_BTN1,       KC_MS_U,       KC_BTN2,       \
-  _______,_______,_______,                 CLMD(KC_SPC),                                            _______,       _______,      _______,                KC_MS_L,       KC_MS_D,       KC_MS_R),
+  CLMD(KC_GRV), KC_F1 , KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_DEL, CLMD(KC_ESC), \
+  CLMD(KC_TAB), CLMD(KC_Q), CLMD(KC_W), CLMD(KC_E), CLMD(KC_R), CLMD(KC_T), CLMD(KC_Y), CLMD(KC_U), CLMD(KC_I), CLMD(KC_O), CLMD(KC_P), CLMD(KC_LBRC), CLMD(KC_RBRC), CLMD(KC_BSLS), CLMD(KC_DEL), \
+  _______, CLMD(KC_A), CLMD(KC_S), CLMD(KC_D), CLMD(KC_F), CLMD(KC_G), KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, CLMD(KC_SCLN), CLMD(KC_QUOT), CLMD(KC_ENT), CLMD(KC_PGUP), \
+  _______, CLMD(KC_Z), CLMD(KC_X), CLMD(KC_C), CLMD(KC_V), CLMD(KC_B), CLMD(KC_N), CLMD(KC_M), CLMD(KC_COMM), CLMD(KC_DOT), CLMD(KC_SLSH), KC_BTN1, KC_MS_U, KC_BTN2, \
+  _______, _______, _______,  CLMD(KC_SPC)  , _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R),
 
   /* Media Layer: Media keys and other random keys
    * ,----------------------------------------------------------------.
@@ -108,15 +108,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |        |   |   |Bl-|BL |BL+|   |  |PREV|NEXT|PAUSE|McL|MsU|McR |
    * |----------------------------------------------------------------|
-   * |    |    |    |                       |   |   |    |MsL|MsD|MsR |
+   * |    |    |    |                       |   |   |F24 |MsL|MsD|MsR |
    * `----------------------------------------------------------------'
    */
 [MEDIA_LAYER] = LAYOUT_ansi(
-  _______, KC_P1, KC_P2, KC_P3, KC_P4, KC_P5, KC_P6, KC_P7, KC_P8, KC_P9, KC_P0, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE, KC_INS ,  \
-  _______,_______, KC_UP,_______,_______, _______,_______,_______,_______,_______,_______,_______,_______, KC_PSCREEN, KC_HOME, \
-  KC_ESC ,KC_LEFT,KC_DOWN,KC_RIGHT,_______,TG(GAME_LAYER),_______,_______,_______,_______,_______,_______,        _______,KC_END, \
-  _______,_______,_______,BL_DEC, BL_TOGG,BL_INC, _______,_______,KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_MEDIA_PLAY_PAUSE,KC_BTN1, KC_MS_U, KC_BTN2, \
-  _______,_______,_______,                 _______,               _______,_______,KC_F24,KC_MS_L,KC_MS_D, KC_MS_R),
+  _______, KC_P1, KC_P2, KC_P3, KC_P4, KC_P5, KC_P6, KC_P7, KC_P8, KC_P9, KC_P0, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_AUDIO_MUTE, KC_INS , \
+  _______, _______, KC_UP, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PSCREEN, KC_HOME, \
+  KC_ESC , KC_LEFT, KC_DOWN, KC_RIGHT, _______, TG(GAME_LAYER), _______, _______, _______, _______, _______, _______, _______, KC_END, \
+  _______, _______, _______, BL_DEC, BL_TOGG, BL_INC, _______, _______, KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, KC_MEDIA_PLAY_PAUSE, KC_BTN1, KC_MS_U, KC_BTN2, \
+  _______, _______, _______, _______, _______, _______, KC_F24, KC_MS_L, KC_MS_D, KC_MS_R),
 
   /*  Unicode Layer: Special characters missing from the standard layout
    * ,----------------------------------------------------------------.
@@ -132,9 +132,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `----------------------------------------------------------------'
    */
 [UNICODE_LAYER] = LAYOUT_ansi(
-  _______,  _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______,   _______, _______, _______,_______, \
-  _______,  _______, UC_M_WC,  X(UNI_E),   _______,   _______,   _______,   _______,   _______,   XP(LOWER_O, UPPER_O),  _______,  _______, _______,_______,_______, \
-  _______, XP(LOWER_A, UPPER_A),   _______,   _______,   _______,   _______,   _______,   _______,   _______,   UC_M_LN,   _______,_______, _______,_______,  \
-  _______,         _______,   _______,   _______,   _______,   _______,   _______,   UC_M_OS,   _______,_______, _______,_______,_______,_______, \
-  _______, _______,_______,                _______,                        _______, _______, _______, _______, _______, _______),
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, UC_M_WC, X(UNI_E), _______, _______, _______, _______, _______, XP(LOWER_O, UPPER_O), _______, _______, _______, _______, _______, \
+  _______, XP(LOWER_A, UPPER_A), _______, _______, _______, _______, _______, _______, _______, UC_M_LN, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______, UC_M_OS, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
 };
