@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|RsCaps| Up|PgDn|
    * |----------------------------------------------------------------|
-   * |Ctrl|Win |Alt |        Space          |UL |ML |Esc |Lef|Dow|Rig |
+   * |Ctrl|Win |Alt |        Space          |UL |ML |CEsc|Lef|Dow|Rig |
    * `----------------------------------------------------------------'
    */
 [BASE_LAYER] = LAYOUT_ansi(
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ALL_T(KC_TAB), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSLS, KC_DEL, \
   LT(CAPS_LAYER, KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, KC_F11, \
   KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, TD(TD_RSHIFT_CAPS), KC_UP, KC_PGDN, \
-  KC_LCTL, KC_LGUI, KC_LALT,  KC_SPC  , MO(UNICODE_LAYER), MO(MEDIA_LAYER), KC_ESC, KC_LEFT, KC_DOWN, KC_RGHT),
+  KC_LCTL, KC_LGUI, KC_LALT,  KC_SPC  , MO(UNICODE_LAYER), MO(MEDIA_LAYER), RCTL_T(KC_ESC), KC_LEFT, KC_DOWN, KC_RGHT),
 
   /*  Game Layer: Block unwanted keys from base layer while gaming
    * ,----------------------------------------------------------------.
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |----------------------------------------------------------------|
    * |        |   |   |   |   |   |   |   |   |   |   |      |   |    |
    * |----------------------------------------------------------------|
-   * |    |    |    |                       |   | FL|    |   |   |    |
+   * |    |    |    |                       |   |   |Esc |   |   |    |
    * `----------------------------------------------------------------'
    */
 [GAME_LAYER] = LAYOUT_ansi(
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   MO(CAPS_LAYER), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
+  _______, _______, _______, _______, _______, _______, KC_ESC, _______, _______, _______),
 
   /* Caps Layer: Convenience binds and rest of the keys modified by ctrl + alt
    * ,----------------------------------------------------------------.
